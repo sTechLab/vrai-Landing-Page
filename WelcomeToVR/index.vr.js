@@ -7,32 +7,20 @@ import {
   View,
   Image,
 } from 'react-vr';
-import Goggle from './components/Goggle'
+import Neuron from './components/Neuron'
 
 export default class WelcomeToVR extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('trianglify11.svg')}/>
-        
-        {// <Image source={asset('chess-world.jpg')}/> 
-        }
-        <View style={{
-          flex: 1,
-          width: 5,
-          flexDirection: 'column',
-          alignItems: 'stretch',
-          backgroundColor: '#333333',
-          layoutOrigin: [0.5, 0.5],
-          transform: [{translate: [0, 0, -5]}]
-        }}>
-          <Image source={asset('chess-world.jpg')} 
-                 style={{width: 1, height: 1}}
-          />
-        </View>
-        {//<Goggle/>
-        }
-        <Text
+        <Pano source={asset('trianglify9.svg')}
+              style={{transform: [ {rotateY: -50} ]}}/>
+        <Neuron posX='-3.8' posY='1.5' top='0' left='0' />
+        <Neuron posX='-2.5' posY='-0.5' top='0' left='0' />
+        <Neuron posX='-0.7' posY='0.8' top='0' left='0' />
+        <Neuron posX='1.25' posY='0' top='0' left='0' />
+        <Neuron posX='2.7' posY='1.2' top='0' left='0' />
+        {/*<Text
           style={{
             backgroundColor: '#777879',
             fontSize: 0.1,
@@ -42,10 +30,11 @@ export default class WelcomeToVR extends React.Component {
             paddingRight: 0.2,
             textAlign: 'center',
             textAlignVertical: 'center',
-            transform: [{translate: [0, 0, -3]}],
+            transform: [ {translate: [0, 0, -4]} ],
           }}>
           placeholder
         </Text>
+      */}
       </View>
     );
   }
