@@ -6,6 +6,10 @@ import {
   Text,
   View,
   Image,
+  AmbientLight,
+  PointLight,
+  DirectionalLight,
+  SpotLight,
 } from 'react-vr';
 import Neuron from './components/Neuron'
 import Axon from './components/Axon'
@@ -13,7 +17,19 @@ import Axon from './components/Axon'
 export default class WelcomeToVR extends React.Component {
   render() {
     return (
-      <View>
+      <View billboarding='off'>
+        <AmbientLight 
+          intensity={0.5}
+          style={{
+
+          }}
+        />
+        <PointLight
+          style={{
+            color: 'white', 
+            transform: [{translate: [0, 0, 0]}]
+          }}
+        /> 
         <Pano source={asset('trianglify9.svg')}
           style={{transform: [ {rotateY: -50} ]}}/>
         <Neuron 
@@ -38,33 +54,33 @@ export default class WelcomeToVR extends React.Component {
           top={0} 
           left={0} />
         <Neuron 
-          text='Experiments' 
-          posX='2.7' 
-          posY='1.2' 
-          posZ='-5'  
-          top='0' 
-          left='0' />
+          text={'Experiments'} 
+          posX={2.7} 
+          posY={1.2} 
+          posZ={-5}  
+          top={0} 
+          left={0} />
         <Neuron 
-          text='Restorative Effects of Virtual Environments' 
-          posX='8' 
-          posY='1.2'  
-          posZ='-10' 
-          top='0' 
-          left='0' />
+          text={'Restorative Effects of Virtual Environments'} 
+          posX={8} 
+          posY={1.2}  
+          posZ={-10} 
+          top={0} 
+          left={0} />
         <Neuron 
-          text='Proteus Effect' 
-          posX='4.3' 
-          posY='1.8'  
-          posZ='-10' 
-          top='0' 
-          left='0' />
+          text={'Proteus Effect'} 
+          posX={4.3} 
+          posY={1.8}  
+          posZ={-10} 
+          top={0} 
+          left={0} />
         <Neuron 
-          text='Drawing Power  of Crowds'
-          posX='6' 
-          posY='4' 
-          posZ='-10' 
-          top='0' 
-          left='0' />
+          text={'Drawing Power  of Crowds'}
+          posX={6} 
+          posY={4} 
+          posZ={-10} 
+          top={0} 
+          left={0} />
         <Neuron 
           text='People' 
           posX='-3.8' 

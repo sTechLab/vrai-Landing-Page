@@ -5,12 +5,19 @@ import {
   Text,
   View,
   Image,
+  Model,
+  AmbientLight,
+  PointLight,
+  DirectionalLight,
+  SpotLight,
+  Sphere,
 } from 'react-vr';
 
 export default class Neuron extends React.Component {
   render() {
     return (
       <View 
+        billboarding='on'
         style={{
           flex: 1,
           width: 1.5,
@@ -30,6 +37,27 @@ export default class Neuron extends React.Component {
         }}>
       {this.props.text}
       </Text>
+           
+      <Model
+        source={{
+          obj: asset('poly1.obj'),
+          mtl: asset('poly1.mtl'),
+        }}
+        lit={true}
+        style={{
+          width: 1, 
+          height: 1,
+          scale: 0.01,
+          opacity: 1,
+
+          transform: [
+            {rotateY: '90deg'},
+            {rotateZ: '-30deg'},
+            {rotateX: '-30deg'}
+          ]
+        }}
+
+      />
       <Image
         source={asset('neuron7.png')} 
         style={{
