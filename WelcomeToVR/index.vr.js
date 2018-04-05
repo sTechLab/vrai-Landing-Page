@@ -9,164 +9,49 @@ import {
   AmbientLight,
   PointLight,
   DirectionalLight,
-  SpotLight,
+  SpotLight
 } from 'react-vr';
-import Neuron from './components/Neuron'
-import Axon from './components/Axon'
+import Neurons from './components/Neurons';
+import Axon from './components/Axon';
 
 export default class WelcomeToVR extends React.Component {
   render() {
-    return (
-      <View billboarding='off'>
-        <AmbientLight 
-          intensity={0.5}
-          style={{
+    const neuronSpecs = {
+      Paper: { name: 'Paper', x: 0, y: 0, z: -50 },
+      People: { x: -20, y: -3, z: -50 },
+      Experiments: { x: 18, y: 4, z: -50 },
+      'Crowd Sourcing': { x: 10, y: -9, z: -50 },
+      'VR Technologies': { x: -25, y: 10, z: -50 },
+      Abstract: { x: -6, y: -6, z: -75 },
+      'Proteus Effect': { x: 12, y: 15, z: -75 },
+      'Drawing Power of Crowds': { x: 40, y: 20, z: -75 },
+      'Restorative Effects of Virtual Environments': { x: 38, y: -5, z: -75 }
+    };
 
+    return (
+      <View>
+        <AmbientLight intensity={1} style={{}} />
+        <DirectionalLight
+          style={{
+            color: 'white',
+            transform: [{ translate: [1000, 500, 2000] }]
           }}
         />
-        <PointLight
-          style={{
-            color: 'white', 
-            transform: [{translate: [0, 0, 0]}]
-          }}
-        /> 
-        <Pano source={asset('trianglify9.svg')}
-          style={{transform: [ {rotateY: -50} ]}}/>
-        <Neuron 
-          text={'Paper'} 
-          posX={-0.7} 
-          posY={0.8} 
-          posZ={-5} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Abstract'} 
-          posX={-1.8} 
-          posY={2.5} 
-          posZ={-10} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Details'} 
-          posX={0.6} 
-          posY={-0.5} 
-          posZ={-10} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Experiments'} 
-          posX={2.7} 
-          posY={1.2} 
-          posZ={-5}  
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Restorative Effects of Virtual Environments'} 
-          posX={8} 
-          posY={1.2}  
-          posZ={-10} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Proteus Effect'} 
-          posX={4.3} 
-          posY={1.8}  
-          posZ={-10} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text={'Drawing Power  of Crowds'}
-          posX={6} 
-          posY={4} 
-          posZ={-10} 
-          top={0} 
-          left={0} />
-        <Neuron 
-          text='People' 
-          posX='-3.8' 
-          posY='1.5' 
-          posZ='-5' 
-          top='0' 
-          left='0' />
-        <Neuron 
-          text='Crowdsourcing' 
-          posX='-2.5' 
-          posY='-0.5' 
-          posZ='-5' 
-          top='0' 
-          left='0' />
-        <Neuron 
-          text='VR Technologies' 
-          posX='1.25' 
-          posY='0' 
-          posZ='-5' 
-          top='0' 
-          left='0' />
-        <Axon 
-          posX={-3.92} 
-          posY={0.4} 
-          scale={0.58} 
-          rotateZ='-14deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={-1.44} 
-          posY={-0.36} 
-          scale={0.36} 
-          rotateZ='-22deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={-3.3} 
-          posY={-0.6} 
-          scale={0.39}
-          rotateZ='35deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={-0.68} 
-          posY={0.27} 
-          scale={0.62} 
-          rotateZ='7deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={0.95} 
-          posY={1} 
-          scale={0.18} 
-          rotateZ='95deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={0.5} 
-          posY={0.5} 
-          scale={0.15} 
-          rotateZ='-6deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={1.47} 
-          posY={0.22} 
-          scale={0.16} 
-          rotateZ='-24deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={-2.1} 
-          posY={-0.32} 
-          scale={0.13} 
-          rotateZ='133deg' 
-          top={0} 
-          left={0} />
-        <Axon 
-          posX={-2.75} 
-          posY={0.52} 
-          scale={0.16} 
-          rotateZ='125deg' 
-          top={0} 
-          left={0} />
-
-
+        <Pano
+          source={asset('chess-world.jpg')}
+          //style={{ transform: [{ rotateY: -50 }] }}
+        />
+        <Neurons spec={neuronSpecs} />
+        <Axon neuron1={[0, 0, -50]} neuron2={[-25, 10, -50]} />
+        {/*}<Axon posX={-1.44} posY={-0.36} scale={0.36} rotateZ="-22deg" />
+        <Axon posX={-3.3} posY={-0.6} scale={0.39} rotateZ="35deg" />
+        <Axon posX={-0.68} posY={0.27} scale={0.62} rotateZ="7deg" />
+        <Axon posX={0.95} posY={1} scale={0.18} rotateZ="95deg" />
+        <Axon posX={0.5} posY={0.5} scale={0.15} rotateZ="-6deg" />
+        <Axon posX={1.47} posY={0.22} scale={0.16} rotateZ="-24deg" />
+        <Axon posX={-2.1} posY={-0.32} scale={0.13} rotateZ="133deg" />
+        <Axon posX={-2.75} posY={0.52} scale={0.16} rotateZ="125deg" />
+        */}
         {/*<Text
           style={{
             backgroundColor: '#777879',
@@ -185,6 +70,6 @@ export default class WelcomeToVR extends React.Component {
       </View>
     );
   }
-};
+}
 
 AppRegistry.registerComponent('WelcomeToVR', () => WelcomeToVR);

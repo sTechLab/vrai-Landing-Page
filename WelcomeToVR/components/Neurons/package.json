@@ -1,0 +1,6 @@
+{
+  "name": "Neurons",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Neurons.js"
+}

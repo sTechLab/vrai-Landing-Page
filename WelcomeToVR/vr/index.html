@@ -2,8 +2,9 @@
   <head>
     <title>WelcomeToVR</title>
     <style>
-      body { 
-        margin: 0; 
+      body {
+        margin: 0;
+        background-color: #000;
         font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif;;
       }
     </style>
@@ -13,9 +14,9 @@
     <!-- When you're ready to deploy your app, update this line to point to your compiled client.bundle.js -->
     <img src="../static_assets/goggle_grey_frame_3840x9216.svg"
          alt="goggle_frame"
-         style="position: fixed; 
-                top: 50%; 
-                left: 50%; 
+         style="position: fixed;
+                top: 50%;
+                left: 50%;
                 opacity: 0.85;
                 z-index: 1;
                 transform: translate(-50%, -50%);
@@ -28,8 +29,8 @@
                color: #fff;
                text-transform: uppercase;
                position: fixed;
-               bottom: 0%; 
-               left: 1.5%; 
+               bottom: 0%;
+               left: 1.5%;
                z-index: 1;
                transform: translate(0%, 0%);"
     >
@@ -39,15 +40,14 @@
     </h1>
     <script src="./client.bundle?platform=vr"></script>
     <script>
-      // Initialize the React VR application
-      ReactVR.init(
-        // When you're ready to deploy your app, update this line to point to
-        // your compiled index.bundle.js
-        '../index.vr.bundle?platform=vr&dev=true',
-        // Attach it to the body tag
-        document.body
-      );
-    </script>
+    // Initialize the React VR application
+ReactVR.init(
+  // When you're ready to deploy your app, update this line to point to
+  // your compiled index.bundle.js
+  '../index.vr.bundle?platform=vr&dev=true',
+  // Attach it to the body tag
+  document.body
+);
+</script>
   </body>
 </html>
-
