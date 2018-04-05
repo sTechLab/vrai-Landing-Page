@@ -7,19 +7,49 @@ export default class Axon extends React.Component {
   }
 
   render() {
-    let width = Math.sqrt(this.props);
-
+    let neuronSpecs = this.props.neurons;
+    let axonSpecs = this.props.axons;
     return (
-      <View
-        style={{
-          width: 27,
-          height: 0.05,
-          position: 'absolute',
-          backgroundColor: '#fff',
-          layoutOrigin: [0, 0],
-          transform: [{ translate: [-25, 5, -50] }, { rotateZ: '-22deg' }]
-        }}
-      />
+      <View>
+        {axonSpecs.map(neurons => (
+          <View
+            key={neurons}
+            style={{
+              width: Math.sqrt(
+                Math.pow(
+                  neuronSpecs[neurons[0]].x - neuronSpecs[neurons[1]].x,
+                  2
+                ) +
+                  Math.pow(
+                    neuronSpecs[neurons[0]].y - neuronSpecs[neurons[1]].y,
+                    2
+                  ) +
+                  Math.pow(
+                    neuronSpecs[neurons[0]].z - neuronSpecs[neurons[1]].z,
+                    2
+                  )
+              ),
+              height: 0.05,
+              position: 'absolute',
+              backgroundColor: '#fff',
+              layoutOrigin: [0, 0],
+              transform: [
+                {
+                  translate: [
+                    Math.min(
+                      neuronSpecs[neurons[0]].x,
+                      neuronSpecs[neurons[1]].x
+                    ),
+                    (neuronSpecs[neurons[0]].y + neuronSpecs[neurons[1]].y) / 2,
+                    (neuronSpecs[neurons[0]].z + neuronSpecs[neurons[1]].z) / 2
+                  ]
+                },
+                { rotateZ: '0deg' }
+              ]
+            }}
+          />
+        ))}
+      </View>
     );
   }
 }

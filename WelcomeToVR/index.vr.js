@@ -27,6 +27,16 @@ export default class WelcomeToVR extends React.Component {
       'Drawing Power of Crowds': { x: 40, y: 20, z: -75 },
       'Restorative Effects of Virtual Environments': { x: 38, y: -5, z: -75 }
     };
+    const axonSpecs = [
+      ['Paper', 'People'],
+      ['Paper', 'Abstract'],
+      ['Paper', 'Experiments'],
+      ['Paper', 'Crowd Sourcing'],
+      ['Paper', 'VR Technologies'],
+      ['Experiments', 'Proteus Effect'],
+      ['Experiments', 'Drawing Power of Crowds'],
+      ['Experiments', 'Restorative Effects of Virtual Environments']
+    ];
 
     return (
       <View>
@@ -41,8 +51,8 @@ export default class WelcomeToVR extends React.Component {
           source={asset('chess-world.jpg')}
           //style={{ transform: [{ rotateY: -50 }] }}
         />
-        <Neurons spec={neuronSpecs} />
-        <Axon neuron1={[0, 0, -50]} neuron2={[-25, 10, -50]} />
+        <Neurons neurons={neuronSpecs} />
+        <Axon neurons={neuronSpecs} axons={axonSpecs} />
         {/*}<Axon posX={-1.44} posY={-0.36} scale={0.36} rotateZ="-22deg" />
         <Axon posX={-3.3} posY={-0.6} scale={0.39} rotateZ="35deg" />
         <Axon posX={-0.68} posY={0.27} scale={0.62} rotateZ="7deg" />

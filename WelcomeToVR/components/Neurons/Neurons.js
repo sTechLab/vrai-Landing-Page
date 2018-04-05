@@ -15,7 +15,7 @@ import {
 
 export default class Neurons extends React.Component {
   render() {
-    let neuronSpecs = this.props.spec;
+    let neuronSpecs = this.props.neurons;
     return (
       <View>
         {Object.keys(neuronSpecs).map(key => (
