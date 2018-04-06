@@ -18,14 +18,14 @@ export default class WelcomeToVR extends React.Component {
   render() {
     const neuronSpecs = {
       Paper: { name: 'Paper', x: 0, y: 0, z: -50 },
-      People: { x: -20, y: -3, z: -50 },
-      Experiments: { x: 18, y: 4, z: -50 },
+      People: { x: -20, y: -5, z: -50 },
+      Experiments: { x: 16, y: 5, z: -50 },
       'Crowd Sourcing': { x: 10, y: -9, z: -50 },
       'VR Technologies': { x: -25, y: 10, z: -50 },
-      Abstract: { x: -6, y: -6, z: -75 },
-      'Proteus Effect': { x: 12, y: 15, z: -75 },
-      'Drawing Power of Crowds': { x: 40, y: 20, z: -75 },
-      'Restorative Effects of Virtual Environments': { x: 38, y: -5, z: -75 }
+      Abstract: { x: -5, y: 8, z: -50 },
+      'Proteus Effect': { x: 10, y: 12, z: -50 },
+      'Drawing Power of Crowds': { x: 25, y: 6, z: -50 },
+      'Restorative Effects of Virtual Environments': { x: 19, y: -3, z: -50 }
     };
     const axonSpecs = [
       ['Paper', 'People'],
@@ -40,7 +40,7 @@ export default class WelcomeToVR extends React.Component {
 
     return (
       <View>
-        <AmbientLight intensity={1} style={{}} />
+        <AmbientLight intensity={0.6} style={{}} />
         <DirectionalLight
           style={{
             color: 'white',
@@ -48,20 +48,12 @@ export default class WelcomeToVR extends React.Component {
           }}
         />
         <Pano
-          source={asset('chess-world.jpg')}
+          source={asset('trianglify9.svg')}
           //style={{ transform: [{ rotateY: -50 }] }}
         />
         <Neurons neurons={neuronSpecs} />
         <Axon neurons={neuronSpecs} axons={axonSpecs} />
-        {/*}<Axon posX={-1.44} posY={-0.36} scale={0.36} rotateZ="-22deg" />
-        <Axon posX={-3.3} posY={-0.6} scale={0.39} rotateZ="35deg" />
-        <Axon posX={-0.68} posY={0.27} scale={0.62} rotateZ="7deg" />
-        <Axon posX={0.95} posY={1} scale={0.18} rotateZ="95deg" />
-        <Axon posX={0.5} posY={0.5} scale={0.15} rotateZ="-6deg" />
-        <Axon posX={1.47} posY={0.22} scale={0.16} rotateZ="-24deg" />
-        <Axon posX={-2.1} posY={-0.32} scale={0.13} rotateZ="133deg" />
-        <Axon posX={-2.75} posY={0.52} scale={0.16} rotateZ="125deg" />
-        */}
+        <Text>hi</Text>
         {/*<Text
           style={{
             backgroundColor: '#777879',

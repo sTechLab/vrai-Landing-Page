@@ -39,12 +39,20 @@ export default class Axon extends React.Component {
                     Math.min(
                       neuronSpecs[neurons[0]].x,
                       neuronSpecs[neurons[1]].x
-                    ),
-                    (neuronSpecs[neurons[0]].y + neuronSpecs[neurons[1]].y) / 2,
+                    ) - 1,
+
+                    (neuronSpecs[neurons[0]].y + neuronSpecs[neurons[1]].y) /
+                      2 -
+                      0.6,
                     (neuronSpecs[neurons[0]].z + neuronSpecs[neurons[1]].z) / 2
                   ]
                 },
-                { rotateZ: '0deg' }
+                {
+                  rotateZ: `${Math.atan(
+                    (neuronSpecs[neurons[0]].y - neuronSpecs[neurons[1]].y) /
+                      (neuronSpecs[neurons[0]].x - neuronSpecs[neurons[1]].x)
+                  )}rad`
+                }
               ]
             }}
           />
