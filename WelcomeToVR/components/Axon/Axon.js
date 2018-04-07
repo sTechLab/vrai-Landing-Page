@@ -1,9 +1,23 @@
 import React from 'react';
-import { asset, Pano, Text, View, Image } from 'react-vr';
+import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
 
 export default class Axon extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      axonThickness: new Animated.Value(0)
+    };
+  }
+
+  componentDidMount() {
+    Animated.timing(
+      // Uses easing functions
+      this.state.axonThickness, // The value to drive
+      {
+        toValue: 1,
+        duration: 3000
+      } // Configuration
+    ).start(); // Don't forget start!
   }
 
   render() {
@@ -12,7 +26,7 @@ export default class Axon extends React.Component {
     return (
       <View>
         {axonSpecs.map(neurons => (
-          <View
+          <Animated.View
             key={neurons}
             style={{
               width: Math.sqrt(
@@ -29,7 +43,10 @@ export default class Axon extends React.Component {
                     2
                   )
               ),
-              height: 0.05,
+              height: this.state.axonThickness.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, 0.05]
+              }),
               position: 'absolute',
               backgroundColor: '#fff',
               layoutOrigin: [0, 0],

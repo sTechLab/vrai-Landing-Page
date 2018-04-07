@@ -1,20 +1,40 @@
+import Axon from './components/Axon';
+import Neurons from './components/Neurons';
 import React from 'react';
 import {
-  AppRegistry,
   asset,
-  Pano,
-  Text,
-  View,
-  Image,
   AmbientLight,
-  PointLight,
+  Animated,
+  AppRegistry,
   DirectionalLight,
-  SpotLight
+  Image,
+  Pano,
+  Plane,
+  PointLight,
+  SpotLight,
+  Text,
+  View
 } from 'react-vr';
-import Neurons from './components/Neurons';
-import Axon from './components/Axon';
 
 export default class WelcomeToVR extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: new Animated.Value(0)
+    };
+  }
+
+  componentDidMount() {
+    Animated.timing(
+      // Uses easing functions
+      this.state.color, // The value to drive
+      {
+        toValue: 1,
+        duration: 5000
+      } // Configuration
+    ).start(); // Don't forget start!
+  }
+
   render() {
     const neuronSpecs = {
       Paper: { name: 'Paper', x: 0, y: 0, z: -50 },
@@ -49,11 +69,24 @@ export default class WelcomeToVR extends React.Component {
         />
         <Pano
           source={asset('trianglify9.svg')}
-          //style={{ transform: [{ rotateY: -50 }] }}
+          style={{ transform: [{ rotateY: -50 }] }}
         />
         <Neurons neurons={neuronSpecs} />
         <Axon neurons={neuronSpecs} axons={axonSpecs} />
-        <Text>hi</Text>
+        <View
+          style={{
+            display: 'none',
+            position: 'absolute',
+            flexDirection: 'row',
+            height: 2.5,
+            width: 5,
+            padding: 1,
+            backgroundColor: 'steelblue',
+            flex: 1,
+            opacity: 0.9,
+            transform: [{ translate: [-2.5, 1.5, -5] }]
+          }}
+        />
         {/*<Text
           style={{
             backgroundColor: '#777879',
