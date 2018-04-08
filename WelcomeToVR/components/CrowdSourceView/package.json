@@ -1,0 +1,6 @@
+{
+  "name": "CrowdSourceView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CrowdSourceView.js"
+}

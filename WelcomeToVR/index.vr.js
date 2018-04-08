@@ -1,5 +1,14 @@
+import AbstractView from './components/AbstractView';
 import Axon from './components/Axon';
+import CrowdSourceView from './components/CrowdSourceView';
+import Exp1View from './components/Exp1View';
+import Exp2View from './components/Exp2View';
+import Exp3View from './components/Exp3View';
+import ExperimentsView from './components/ExperimentsView';
 import Neurons from './components/Neurons';
+import PaperView from './components/PaperView';
+import PeopleView from './components/PeopleView';
+import VRView from './components/VRView';
 import React from 'react';
 import {
   asset,
@@ -39,13 +48,13 @@ export default class WelcomeToVR extends React.Component {
     const neuronSpecs = {
       Paper: { name: 'Paper', x: 0, y: 0, z: -50 },
       People: { x: -20, y: -5, z: -50 },
-      Experiments: { x: 16, y: 5, z: -50 },
+      Experiments: { x: 15, y: 6, z: -50 },
       'Crowd Sourcing': { x: 10, y: -9, z: -50 },
       'VR Technologies': { x: -25, y: 10, z: -50 },
       Abstract: { x: -5, y: 8, z: -50 },
       'Proteus Effect': { x: 10, y: 12, z: -50 },
-      'Drawing Power of Crowds': { x: 25, y: 6, z: -50 },
-      'Restorative Effects of Virtual Environments': { x: 19, y: -3, z: -50 }
+      'Drawing Power of Crowds': { x: 25, y: 7, z: -50 },
+      'Restorative Effects of Virtual Environments': { x: 20, y: -2, z: -50 }
     };
     const axonSpecs = [
       ['Paper', 'People'],
@@ -75,18 +84,39 @@ export default class WelcomeToVR extends React.Component {
         <Axon neurons={neuronSpecs} axons={axonSpecs} />
         <View
           style={{
-            display: 'none',
+            display: 'flex',
             position: 'absolute',
-            flexDirection: 'row',
-            height: 2.5,
-            width: 5,
+            flexDirection: 'column',
+            height: 1,
+            width: 4,
             padding: 1,
-            backgroundColor: 'steelblue',
+            backgroundColor: 'lightgrey',
             flex: 1,
-            opacity: 0.9,
-            transform: [{ translate: [-2.5, 1.5, -5] }]
+            opacity: 0.8,
+            transform: [{ translate: [-2, 1, -2] }, { scale: 0.5 }]
           }}
-        />
+        >
+          <Text
+            style={{
+              position: 'absolute',
+              top: -0.2,
+              left: 0.15,
+              fontSize: 0.3,
+              fontWeight: '400'
+            }}
+          >
+            Abstract
+          </Text>
+          <PaperView />
+          <PeopleView />
+          <AbstractView />
+          <VRView />
+          <CrowdSourceView />
+          <ExperimentsView />
+          <Exp1View />
+          <Exp2View />
+          <Exp3View />
+        </View>
         {/*<Text
           style={{
             backgroundColor: '#777879',

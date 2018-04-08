@@ -21,6 +21,11 @@ export default class Neurons extends React.Component {
     this.state = {
       neuronState: new Animated.Value(0)
     };
+    for (key of Object.keys(props.neurons)) {
+      this.state[key] = {};
+      this.state[key].obj = 'Icosahedron_blue.obj';
+      this.state[key].mtl = 'Icosahedron_blue.mtl';
+    }
   }
 
   componentDidMount() {
@@ -36,6 +41,10 @@ export default class Neurons extends React.Component {
 
   render() {
     let neuronSpecs = this.props.neurons;
+    let objBlue = 'Icosahedron_blue.obj';
+    let objGreen = 'Icosahedron_green.obj';
+    let mtlBlue = 'Icosahedron_blue.mtl';
+    let mtlGreen = 'Icosahedron_green.mtl';
     return (
       <View>
         {Object.keys(neuronSpecs).map(key => (
@@ -49,16 +58,24 @@ export default class Neurons extends React.Component {
             }}
             key={key}
           >
-            <VrButton onClick={() => this._onViewClicked()}>
+            <VrButton
+              onEnter={() => {
+                this.setState({ [`${key}`]: { obj: objGreen, mtl: mtlGreen } });
+              }}
+              onExit={() => {
+                this.setState({ [`${key}`]: { obj: objBlue, mtl: mtlBlue } });
+              }}
+            >
               <Text
                 style={{
-                  fontWeight: '300',
+                  width: 0.7,
+                  fontWeight: '400',
                   position: 'absolute',
                   transform: [
                     {
                       translate: [
-                        -0.25 + neuronSpecs[key].x / 20,
-                        0.15 + neuronSpecs[key].y / 18,
+                        -0.15 + neuronSpecs[key].x / 15,
+                        0.15 + neuronSpecs[key].y / 17,
                         neuronSpecs[key].z / 18
                       ]
                     },
@@ -70,8 +87,8 @@ export default class Neurons extends React.Component {
               </Text>
               <Model
                 source={{
-                  obj: asset('poly1.obj'),
-                  mtl: asset('poly1.mtl')
+                  obj: asset(this.state[key].obj),
+                  mtl: asset(this.state[key].mtl)
                 }}
                 lit={true}
                 wireframe={true}
@@ -81,7 +98,7 @@ export default class Neurons extends React.Component {
                   height: 1,
                   margin: 0,
                   // opacity: 1,
-                  layoutOrigin: [5, -5],
+                  layoutOrigin: [0, 0],
                   // animation: ,
                   transform: [
                     {

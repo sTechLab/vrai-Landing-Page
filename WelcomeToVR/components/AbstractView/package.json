@@ -1,0 +1,6 @@
+{
+  "name": "AbstractView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./AbstractView.js"
+}

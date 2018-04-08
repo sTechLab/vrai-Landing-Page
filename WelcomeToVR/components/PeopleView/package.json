@@ -1,0 +1,6 @@
+{
+  "name": "PeopleView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./PeopleView.js"
+}
