@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  background-color: #000;
+  font-family: 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 200;
+  letter-spacing: 0.08em;
+  line-height: 150%;
+  color: #fff;
+  text-transform: uppercase;
+  position: fixed;
+  bottom: 0%;
+  left: 1.5%;
+  z-index: 1;
+  transform: translate(0%, 0%);
+}
+
+#goggle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  opacity: 0.85;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
