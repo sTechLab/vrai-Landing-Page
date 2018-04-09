@@ -9,8 +9,7 @@ var config = {
   },
 
   getBlacklistRE() {
-    return blacklist([
-    ]);
+    return blacklist([]);
   },
 
   getAssetExts() {
@@ -23,7 +22,7 @@ var config = {
 
   getProvidesModuleNodeModules() {
     return ['react-native', 'react-vr'];
-  },
+  }
 };
 
 function getRoots() {
