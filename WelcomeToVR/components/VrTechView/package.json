@@ -1,0 +1,6 @@
+{
+  "name": "VrTechView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./VrTechView.js"
+}

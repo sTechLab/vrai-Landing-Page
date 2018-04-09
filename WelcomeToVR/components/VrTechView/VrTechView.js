@@ -1,7 +1,7 @@
 import React from 'react';
 import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
 
-export default class ExperimentsView extends React.Component {
+export default class VRView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,7 @@ export default class ExperimentsView extends React.Component {
             // lineHeight: 40
           }}
         >
-          {`Placeholder text`}
+          {`placeholder text: vr`}
         </Text>
       </View>
     );

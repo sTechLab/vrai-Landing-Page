@@ -8,13 +8,14 @@ import ExperimentsView from './components/ExperimentsView';
 import Neurons from './components/Neurons';
 import PaperView from './components/PaperView';
 import PeopleView from './components/PeopleView';
-import VRView from './components/VRView';
+import VrTechView from './components/VrTechView';
 import React from 'react';
 import {
   asset,
   AmbientLight,
   Animated,
   AppRegistry,
+  CylindricalPanel,
   DirectionalLight,
   Image,
   Pano,
@@ -22,16 +23,25 @@ import {
   PointLight,
   SpotLight,
   Text,
-  View
+  View,
+  VrButton
 } from 'react-vr';
 
 export default class WelcomeToVR extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      color: new Animated.Value(0)
+      color: new Animated.Value(0),
+      contentActive: false,
+      renderedContent: null
     };
+    console.log(this.state);
   }
+
+  _updateRenderedContent = updatedContent => {
+    this.setState({ renderedContent: updatedContent });
+    this.setState({ contentActive: true });
+  };
 
   componentDidMount() {
     Animated.timing(
@@ -56,6 +66,7 @@ export default class WelcomeToVR extends React.Component {
       'Drawing Power of Crowds': { x: 25, y: 7, z: -50 },
       'Restorative Effects of Virtual Environments': { x: 20, y: -2, z: -50 }
     };
+    // connections between neurons
     const axonSpecs = [
       ['Paper', 'People'],
       ['Paper', 'Abstract'],
@@ -66,6 +77,17 @@ export default class WelcomeToVR extends React.Component {
       ['Experiments', 'Drawing Power of Crowds'],
       ['Experiments', 'Restorative Effects of Virtual Environments']
     ];
+    const contentViews = {
+      Paper: <PaperView />,
+      People: <PeopleView />,
+      Experiments: <ExperimentsView />,
+      'Crowd Sourcing': <CrowdSourceView />,
+      'VR Technologies': <VrTechView />,
+      Abstract: <AbstractView />,
+      'Proteus Effect': <Exp2View />,
+      'Drawing Power of Crowds': <Exp3View />,
+      'Restorative Effects of Virtual Environments': <Exp1View />
+    };
 
     return (
       <View>
@@ -80,58 +102,53 @@ export default class WelcomeToVR extends React.Component {
           source={asset('trianglify9.svg')}
           style={{ transform: [{ rotateY: -50 }] }}
         />
-        <Neurons neurons={neuronSpecs} />
+        <Neurons
+          neurons={neuronSpecs}
+          updateRenderedContent={this._updateRenderedContent}
+        />
         <Axon neurons={neuronSpecs} axons={axonSpecs} />
-        <View
-          style={{
-            display: 'flex',
-            position: 'absolute',
-            flexDirection: 'column',
-            height: 1,
-            width: 4,
-            padding: 1,
-            backgroundColor: 'lightgrey',
-            flex: 1,
-            opacity: 0.8,
-            transform: [{ translate: [-2, 1, -2] }, { scale: 0.5 }]
-          }}
-        >
-          <Text
-            style={{
-              position: 'absolute',
-              top: -0.2,
-              left: 0.15,
-              fontSize: 0.3,
-              fontWeight: '400'
-            }}
-          >
-            Abstract
-          </Text>
-          <PaperView />
-          <PeopleView />
-          <AbstractView />
-          <VRView />
-          <CrowdSourceView />
-          <ExperimentsView />
-          <Exp1View />
-          <Exp2View />
-          <Exp3View />
-        </View>
-        {/*<Text
-          style={{
-            backgroundColor: '#777879',
-            fontSize: 0.1,
-            fontWeight: '400',
-            layoutOrigin: [0.5, 0.5],
-            paddingLeft: 0.2,
-            paddingRight: 0.2,
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            transform: [ {translate: [0, 0, -4]} ],
-          }}>
-          placeholder
-        </Text>
-      */}
+        {(() => {
+          if (this.state.contentActive) {
+            return (
+              <CylindricalPanel
+                layer={{ width: 640, height: 450, radius: 2 }}
+                style={{
+                  position: 'absolute'
+                }}
+              >
+                <View
+                  style={{
+                    backgroundColor: 'transparent'
+                  }}
+                >
+                  <Text
+                    style={{
+                      top: 0,
+                      left: 30,
+                      fontSize: 55,
+                      fontWeight: '400'
+                    }}
+                  >
+                    {this.state.renderedContent}
+                  </Text>
+                  <View
+                    style={{
+                      opacity: 0.9,
+                      width: 640,
+                      height: 320,
+                      backgroundColor: 'lightslategrey',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 15
+                    }}
+                  >
+                    {contentViews[this.state.renderedContent]}
+                  </View>
+                </View>
+              </CylindricalPanel>
+            );
+          }
+        })()}
       </View>
     );
   }

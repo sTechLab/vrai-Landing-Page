@@ -1,3 +1,5 @@
+const Easing = require('Easing');
+
 import React from 'react';
 import {
   asset,
@@ -19,7 +21,8 @@ export default class Neurons extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      neuronState: new Animated.Value(0)
+      neuronState: new Animated.Value(0),
+      renderedContent: props.renderedContent
     };
     for (key of Object.keys(props.neurons)) {
       this.state[key] = {};
@@ -34,7 +37,8 @@ export default class Neurons extends React.Component {
       this.state.neuronState, // The value to drive
       {
         toValue: 1,
-        duration: 3000
+        duration: 3000,
+        easing: Easing.ease
       } // Configuration
     ).start(); // Don't forget start!
   }
@@ -65,6 +69,7 @@ export default class Neurons extends React.Component {
               onExit={() => {
                 this.setState({ [`${key}`]: { obj: objBlue, mtl: mtlBlue } });
               }}
+              onClick={() => this.props.updateRenderedContent(key)}
             >
               <Text
                 style={{
@@ -75,7 +80,7 @@ export default class Neurons extends React.Component {
                     {
                       translate: [
                         -0.15 + neuronSpecs[key].x / 15,
-                        0.15 + neuronSpecs[key].y / 17,
+                        0.18 + neuronSpecs[key].y / 18,
                         neuronSpecs[key].z / 18
                       ]
                     },
@@ -108,6 +113,7 @@ export default class Neurons extends React.Component {
                         neuronSpecs[key].z
                       ]
                     },
+                    { rotateY: '0deg' },
                     { scale: 1 }
                   ]
                 }}

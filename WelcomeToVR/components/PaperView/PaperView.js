@@ -21,6 +21,31 @@ export default class PaperView extends React.Component {
   }
 
   render() {
-    return <View style={{ display: 'none' }} />;
+    return (
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: 'white',
+          width: 630,
+          height: 310,
+          backgroundColor: '#0094E0',
+          borderRadius: 15
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 18.5,
+            fontWeight: '100',
+            opacity: 1,
+            marginHorizontal: 30,
+            marginTop: 35,
+            textAlign: 'center'
+            // lineHeight: 40
+          }}
+        >
+          {`Placeholder text`}
+        </Text>
+      </View>
+    );
   }
 }

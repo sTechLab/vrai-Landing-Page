@@ -24,27 +24,22 @@ export default class AbstractView extends React.Component {
     return (
       <View
         style={{
-          borderWidth: 0,
+          borderWidth: 1,
           borderColor: 'white',
-          display: 'flex',
-          position: 'absolute',
-          flexDirection: 'row',
-          height: 1.7,
-          width: 3.75,
-          padding: 0.1,
+          width: 630,
+          height: 310,
           backgroundColor: '#0094E0',
-          flex: 1,
-          opacity: 1,
-          transform: [{ translate: [0.125, -0.2, 0] }]
+          borderRadius: 15
         }}
       >
         <Text
           style={{
-            fontSize: 0.1,
-            fontWeight: '400',
+            fontSize: 18.5,
+            fontWeight: '100',
             opacity: 1,
-            top: -0.015
-            // textAlign: 'justify',
+            marginHorizontal: 30,
+            marginTop: 35,
+            textAlign: 'center'
             // lineHeight: 40
           }}
         >
