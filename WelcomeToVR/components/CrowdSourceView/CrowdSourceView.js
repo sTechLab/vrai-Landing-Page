@@ -5,19 +5,14 @@ export default class CrowdSourceView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      axonThickness: new Animated.Value(0)
+      width: 570,
+      height: 290
     };
   }
 
   componentDidMount() {
-    Animated.timing(
-      // Uses easing functions
-      this.state.axonThickness, // The value to drive
-      {
-        toValue: 1,
-        duration: 3000
-      } // Configuration
-    ).start(); // Don't forget start!
+    this.props.setWidth(this.state.width);
+    this.props.setHeight(this.state.height);
   }
 
   render() {
@@ -26,24 +21,27 @@ export default class CrowdSourceView extends React.Component {
         style={{
           borderWidth: 1,
           borderColor: 'white',
-          width: 630,
-          height: 310,
-          backgroundColor: '#0094E0',
-          borderRadius: 15
+          width: this.state.width,
+          height: this.state.height,
+          backgroundColor: '#222',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          padding: 40
         }}
       >
         <Text
           style={{
-            fontSize: 18.5,
+            fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            marginHorizontal: 30,
-            marginTop: 35,
-            textAlign: 'center'
-            // lineHeight: 40
+            textAlign: 'justify'
           }}
         >
-          {`Placeholder text`}
+          {`Def. [Wikipedia]
+            "Crowdsourcing is a sourcing model in which individuals or organizations obtain goods and services, including ideas and finances, from a large, relatively open and often rapidly-evolving group of internet users."\n
+            In this paper we use crowdsourcing to refer to "microtasks" performed in parallel by large, paid crowds (e.g. Amazon Mechanical Turk).`}
         </Text>
       </View>
     );

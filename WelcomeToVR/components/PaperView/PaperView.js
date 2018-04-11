@@ -5,19 +5,14 @@ export default class PaperView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      axonThickness: new Animated.Value(0)
+      width: 570,
+      height: 240
     };
   }
 
   componentDidMount() {
-    Animated.timing(
-      // Uses easing functions
-      this.state.axonThickness, // The value to drive
-      {
-        toValue: 1,
-        duration: 3000
-      } // Configuration
-    ).start(); // Don't forget start!
+    this.props.setWidth(this.state.width);
+    this.props.setHeight(this.state.height);
   }
 
   render() {
@@ -26,24 +21,26 @@ export default class PaperView extends React.Component {
         style={{
           borderWidth: 1,
           borderColor: 'white',
-          width: 630,
-          height: 310,
-          backgroundColor: '#0094E0',
-          borderRadius: 15
+          width: this.state.width,
+          height: this.state.height,
+          backgroundColor: '#222',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          padding: 40
         }}
       >
         <Text
           style={{
-            fontSize: 18.5,
+            fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            marginHorizontal: 30,
-            marginTop: 35,
-            textAlign: 'center'
-            // lineHeight: 40
+            textAlign: 'justify'
           }}
         >
-          {`Placeholder text`}
+          {`Presenting at The Web Conference 2018, Lyon, France -- Crowdsourcing and Human Computation for the Web Research Track.\n
+            The PDF version is available through: https://arxiv.org/abs/1802.08345`}
         </Text>
       </View>
     );

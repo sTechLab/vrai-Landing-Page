@@ -5,19 +5,14 @@ export default class ExperimentsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      axonThickness: new Animated.Value(0)
+      width: 630,
+      height: 300
     };
   }
 
   componentDidMount() {
-    Animated.timing(
-      // Uses easing functions
-      this.state.axonThickness, // The value to drive
-      {
-        toValue: 1,
-        duration: 3000
-      } // Configuration
-    ).start(); // Don't forget start!
+    this.props.setWidth(this.state.width);
+    this.props.setHeight(this.state.height);
   }
 
   render() {
@@ -26,24 +21,25 @@ export default class ExperimentsView extends React.Component {
         style={{
           borderWidth: 1,
           borderColor: 'white',
-          width: 630,
-          height: 310,
-          backgroundColor: '#0094E0',
-          borderRadius: 15
+          width: this.state.width,
+          height: this.state.height,
+          backgroundColor: '#222',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
       >
         <Text
           style={{
-            fontSize: 18.5,
+            fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            marginHorizontal: 30,
-            marginTop: 35,
+            width: 500,
             textAlign: 'center'
             // lineHeight: 40
           }}
         >
-          {`Placeholder text`}
+          {`text`}
         </Text>
       </View>
     );

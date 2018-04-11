@@ -48,10 +48,10 @@ export default class Axon extends React.Component {
               ),
               height: this.state.axonThickness.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 0.05]
+                outputRange: [0, 0.08]
               }),
               position: 'absolute',
-              backgroundColor: '#fff',
+              backgroundColor: 'lightgrey',
               layoutOrigin: [0, 0],
               transform: [
                 {

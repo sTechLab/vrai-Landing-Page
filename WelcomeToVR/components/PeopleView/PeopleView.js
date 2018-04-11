@@ -1,23 +1,19 @@
+import { authors } from '../viewSpecs';
 import React from 'react';
-import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
+import { asset, Animated, Image, Pano, Text, View, VrButton } from 'react-vr';
 
 export default class PeopleView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      axonThickness: new Animated.Value(0)
+      width: 700,
+      height: 320
     };
   }
 
   componentDidMount() {
-    Animated.timing(
-      // Uses easing functions
-      this.state.axonThickness, // The value to drive
-      {
-        toValue: 1,
-        duration: 3000
-      } // Configuration
-    ).start(); // Don't forget start!
+    this.props.setWidth(this.state.width);
+    this.props.setHeight(this.state.height);
   }
 
   render() {
@@ -26,25 +22,54 @@ export default class PeopleView extends React.Component {
         style={{
           borderWidth: 1,
           borderColor: 'white',
-          width: 630,
-          height: 310,
-          backgroundColor: '#0094E0',
-          borderRadius: 15
+          width: this.state.width,
+          height: this.state.height,
+          backgroundColor: '#222',
+          padding: 40,
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center'
         }}
       >
-        <Text
-          style={{
-            fontSize: 18.5,
-            fontWeight: '100',
-            opacity: 1,
-            marginHorizontal: 30,
-            marginTop: 35,
-            textAlign: 'center'
-            // lineHeight: 40
-          }}
-        >
-          {`Placeholder text`}
-        </Text>
+        {Object.keys(authors).map(key => (
+          <View
+            key={key}
+            style={{
+              width: 100,
+              height: 190,
+              backgroundColor: 'transparent',
+              justifyContent: 'space-around'
+            }}
+          >
+            <Image
+              source={asset(authors[key].img)}
+              style={{
+                width: 100,
+                height: 100,
+                borderRadius: 50,
+                position: 'absolute',
+                top: 10
+              }}
+            />
+            <VrButton
+              style={{
+                marginTop: 90
+              }}
+              onClick={() => this.props.updateRenderedContent(key)}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: '200',
+                  textAlign: 'center'
+                }}
+              >
+                {authors[key].name}
+              </Text>
+            </VrButton>
+          </View>
+        ))}
       </View>
     );
   }

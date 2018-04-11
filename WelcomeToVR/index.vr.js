@@ -8,6 +8,7 @@ import ExperimentsView from './components/ExperimentsView';
 import Neurons from './components/Neurons';
 import PaperView from './components/PaperView';
 import PeopleView from './components/PeopleView';
+import { axonSpecs, neuronSpecs } from './components/viewSpecs';
 import VrTechView from './components/VrTechView';
 import React from 'react';
 import {
@@ -32,15 +33,26 @@ export default class WelcomeToVR extends React.Component {
     super();
     this.state = {
       color: new Animated.Value(0),
+      panelWidth: 800,
+      panelHeight: 450,
       contentActive: false,
-      renderedContent: null
+      renderedContent: null,
+      contentViewWidth: 0,
+      contentViewHeight: 0
     };
-    console.log(this.state);
   }
 
   _updateRenderedContent = updatedContent => {
     this.setState({ renderedContent: updatedContent });
     this.setState({ contentActive: true });
+  };
+
+  _setViewWidth = childWidth => {
+    this.setState({ contentViewWidth: childWidth + 5 });
+  };
+
+  _setViewHeight = childHeight => {
+    this.setState({ contentViewHeight: childHeight + 5 });
   };
 
   componentDidMount() {
@@ -55,38 +67,61 @@ export default class WelcomeToVR extends React.Component {
   }
 
   render() {
-    const neuronSpecs = {
-      Paper: { name: 'Paper', x: 0, y: 0, z: -50 },
-      People: { x: -20, y: -5, z: -50 },
-      Experiments: { x: 15, y: 6, z: -50 },
-      'Crowd Sourcing': { x: 10, y: -9, z: -50 },
-      'VR Technologies': { x: -25, y: 10, z: -50 },
-      Abstract: { x: -5, y: 8, z: -50 },
-      'Proteus Effect': { x: 10, y: 12, z: -50 },
-      'Drawing Power of Crowds': { x: 25, y: 7, z: -50 },
-      'Restorative Effects of Virtual Environments': { x: 20, y: -2, z: -50 }
-    };
-    // connections between neurons
-    const axonSpecs = [
-      ['Paper', 'People'],
-      ['Paper', 'Abstract'],
-      ['Paper', 'Experiments'],
-      ['Paper', 'Crowd Sourcing'],
-      ['Paper', 'VR Technologies'],
-      ['Experiments', 'Proteus Effect'],
-      ['Experiments', 'Drawing Power of Crowds'],
-      ['Experiments', 'Restorative Effects of Virtual Environments']
-    ];
     const contentViews = {
-      Paper: <PaperView />,
-      People: <PeopleView />,
-      Experiments: <ExperimentsView />,
-      'Crowd Sourcing': <CrowdSourceView />,
-      'VR Technologies': <VrTechView />,
-      Abstract: <AbstractView />,
-      'Proteus Effect': <Exp2View />,
-      'Drawing Power of Crowds': <Exp3View />,
-      'Restorative Effects of Virtual Environments': <Exp1View />
+      Paper: (
+        <PaperView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      People: (
+        <PeopleView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      Experiments: (
+        <ExperimentsView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      'Crowd Sourcing': (
+        <CrowdSourceView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      'VR Technologies': (
+        <VrTechView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      Abstract: (
+        <AbstractView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      'Proteus Effect': (
+        <Exp2View
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      'Drawing Power of Crowds': (
+        <Exp3View
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      'Restorative Effects of Virtual Environments': (
+        <Exp1View
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      )
     };
 
     return (
@@ -102,6 +137,7 @@ export default class WelcomeToVR extends React.Component {
           source={asset('trianglify9.svg')}
           style={{ transform: [{ rotateY: -50 }] }}
         />
+
         <Neurons
           neurons={neuronSpecs}
           updateRenderedContent={this._updateRenderedContent}
@@ -111,22 +147,33 @@ export default class WelcomeToVR extends React.Component {
           if (this.state.contentActive) {
             return (
               <CylindricalPanel
-                layer={{ width: 640, height: 450, radius: 2 }}
+                layer={{
+                  width: this.state.panelWidth,
+                  height: this.state.panelHeight,
+                  radius: 2
+                }}
                 style={{
                   position: 'absolute'
+                  // display: 'flex',
+                  // flexDirection: 'column',
+                  // justifyContent: 'center',
+                  // alignItems: 'center'
                 }}
               >
                 <View
                   style={{
-                    backgroundColor: 'transparent'
+                    backgroundColor: 'transparent',
+                    width: this.state.contentViewWidth,
+                    height: this.state.contentViewHeight,
+                    marginHorizontal:
+                      (this.state.panelWidth - this.state.contentViewWidth) / 2
                   }}
                 >
                   <Text
                     style={{
-                      top: 0,
-                      left: 30,
                       fontSize: 55,
-                      fontWeight: '400'
+                      fontWeight: '400',
+                      width: this.state.contentViewWidth
                     }}
                   >
                     {this.state.renderedContent}
@@ -134,12 +181,11 @@ export default class WelcomeToVR extends React.Component {
                   <View
                     style={{
                       opacity: 0.9,
-                      width: 640,
-                      height: 320,
+                      width: this.state.contentViewWidth,
+                      height: this.state.contentViewHeight,
                       backgroundColor: 'lightslategrey',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: 15
+                      justifyContent: 'center'
                     }}
                   >
                     {contentViews[this.state.renderedContent]}

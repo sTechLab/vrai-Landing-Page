@@ -49,6 +49,7 @@ export default class Neurons extends React.Component {
     let objGreen = 'Icosahedron_green.obj';
     let mtlBlue = 'Icosahedron_blue.mtl';
     let mtlGreen = 'Icosahedron_green.mtl';
+
     return (
       <View>
         {Object.keys(neuronSpecs).map(key => (
@@ -79,8 +80,8 @@ export default class Neurons extends React.Component {
                   transform: [
                     {
                       translate: [
-                        -0.15 + neuronSpecs[key].x / 15,
-                        0.18 + neuronSpecs[key].y / 18,
+                        -0.14 + neuronSpecs[key].x / 15,
+                        0.18 + neuronSpecs[key].y / 17,
                         neuronSpecs[key].z / 18
                       ]
                     },
