@@ -35,7 +35,7 @@ export default class WelcomeToVR extends React.Component {
     this.state = {
       color: new Animated.Value(0),
       panelWidth: 800,
-      panelHeight: 500,
+      panelHeight: 550,
       contentActive: false,
       renderedContent: null,
       contentViewWidth: 0,
@@ -46,6 +46,11 @@ export default class WelcomeToVR extends React.Component {
   _updateRenderedContent = updatedContent => {
     this.setState({ renderedContent: updatedContent });
     this.setState({ contentActive: true });
+  };
+
+  _closeContentView = () => {
+    this.setState({ renderedContent: null });
+    this.setState({ contentActive: false });
   };
 
   _setViewWidth = childWidth => {
@@ -198,6 +203,35 @@ export default class WelcomeToVR extends React.Component {
                     {contentViews[this.state.renderedContent]}
                   </View>
                 </View>
+                <VrButton
+                  style={{
+                    width: 120,
+                    height: 50,
+                    borderRadius: 25,
+                    backgroundColor: '#111',
+                    borderWidth: 2,
+                    borderColor: '#888',
+                    alignSelf: 'center',
+                    marginTop: 100,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}
+                  onClick={() => this._closeContentView()}
+                >
+                  <Text
+                    style={{
+                      width: 80,
+                      height: 40,
+                      fontSize: 28,
+                      fontWeight: '200',
+                      color: '#fff',
+                      textAlign: 'center'
+                    }}
+                  >
+                    Close
+                  </Text>
+                </VrButton>
               </CylindricalPanel>
             );
           }
