@@ -20,11 +20,9 @@ export default class PeopleView extends React.Component {
     return (
       <View
         style={{
-          borderWidth: 1,
-          borderColor: 'white',
           width: this.state.width,
           height: this.state.height,
-          backgroundColor: '#222',
+          backgroundColor: '#111',
           padding: 40,
           display: 'flex',
           flexDirection: 'row',
@@ -56,7 +54,6 @@ export default class PeopleView extends React.Component {
               style={{
                 marginTop: 90
               }}
-              onClick={() => this.props.updateRenderedContent(key)}
             >
               <Text
                 style={{

@@ -8,6 +8,7 @@ import ExperimentsView from './components/ExperimentsView';
 import Neurons from './components/Neurons';
 import PaperView from './components/PaperView';
 import PeopleView from './components/PeopleView';
+import SoftwareView from './components/SoftwareView';
 import { axonSpecs, neuronSpecs } from './components/viewSpecs';
 import VrTechView from './components/VrTechView';
 import React from 'react';
@@ -34,7 +35,7 @@ export default class WelcomeToVR extends React.Component {
     this.state = {
       color: new Animated.Value(0),
       panelWidth: 800,
-      panelHeight: 450,
+      panelHeight: 500,
       contentActive: false,
       renderedContent: null,
       contentViewWidth: 0,
@@ -48,11 +49,11 @@ export default class WelcomeToVR extends React.Component {
   };
 
   _setViewWidth = childWidth => {
-    this.setState({ contentViewWidth: childWidth + 5 });
+    this.setState({ contentViewWidth: childWidth + 4 });
   };
 
   _setViewHeight = childHeight => {
-    this.setState({ contentViewHeight: childHeight + 5 });
+    this.setState({ contentViewHeight: childHeight + 4 });
   };
 
   componentDidMount() {
@@ -76,6 +77,12 @@ export default class WelcomeToVR extends React.Component {
       ),
       People: (
         <PeopleView
+          setWidth={this._setViewWidth}
+          setHeight={this._setViewHeight}
+        />
+      ),
+      Software: (
+        <SoftwareView
           setWidth={this._setViewWidth}
           setHeight={this._setViewHeight}
         />
@@ -183,7 +190,7 @@ export default class WelcomeToVR extends React.Component {
                       opacity: 0.9,
                       width: this.state.contentViewWidth,
                       height: this.state.contentViewHeight,
-                      backgroundColor: 'lightslategrey',
+                      backgroundColor: '#888',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}

@@ -1,12 +1,13 @@
+import { vrTech } from '../viewSpecs';
 import React from 'react';
-import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
+import { asset, Animated, Image, Pano, Text, View, VrButton } from 'react-vr';
 
 export default class VrTechView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 430,
-      height: 300
+      width: 720,
+      height: 350
     };
   }
 
@@ -19,28 +20,52 @@ export default class VrTechView extends React.Component {
     return (
       <View
         style={{
-          borderWidth: 1,
-          borderColor: 'white',
           width: this.state.width,
           height: this.state.height,
-          backgroundColor: '#222',
+          backgroundColor: '#111',
+          padding: 40,
           display: 'flex',
-          justifyContent: 'center',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           alignItems: 'center'
         }}
       >
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: '100',
-            opacity: 1,
-            width: 500,
-            textAlign: 'center'
-            // lineHeight: 40
-          }}
-        >
-          {`text`}
-        </Text>
+        {Object.keys(vrTech).map(key => (
+          <View
+            key={vrTech[`${key}`].category}
+            style={{
+              width: 201,
+              height: 300,
+              backgroundColor: 'transparent',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Image
+              source={asset(vrTech[key].img)}
+              style={{
+                width: 201,
+                height: 134,
+                position: 'absolute',
+                top: 50
+              }}
+            />
+            <VrButton
+              style={{
+                marginTop: 200
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: '200',
+                  textAlign: 'center'
+                }}
+              >
+                {vrTech[key].category}
+              </Text>
+            </VrButton>
+          </View>
+        ))}
       </View>
     );
   }

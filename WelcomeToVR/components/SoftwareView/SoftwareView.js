@@ -1,12 +1,12 @@
 import React from 'react';
 import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
 
-export default class CrowdSourceView extends React.Component {
+export default class SoftwareView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 570,
-      height: 290
+      width: 540,
+      height: 200
     };
   }
 
@@ -23,10 +23,8 @@ export default class CrowdSourceView extends React.Component {
           height: this.state.height,
           backgroundColor: '#111',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: 40
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
       >
         <Text
@@ -34,12 +32,12 @@ export default class CrowdSourceView extends React.Component {
             fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            textAlign: 'justify'
+            width: 500,
+            textAlign: 'center'
+            // lineHeight: 40
           }}
         >
-          {`Def. [Wikipedia]
-            "Crowdsourcing is a sourcing model in which individuals or organizations obtain goods and services, including ideas and finances, from a large, relatively open and often rapidly-evolving group of internet users."\n
-            In this paper we use crowdsourcing to refer to "microtasks" performed in parallel by large, paid crowds (e.g. Amazon Mechanical Turk).`}
+          {`Github link: https://github.com/sTechLab/VRCrowdExperiments`}
         </Text>
       </View>
     );

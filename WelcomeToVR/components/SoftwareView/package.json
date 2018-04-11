@@ -1,0 +1,6 @@
+{
+  "name": "SoftwareView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SoftwareView.js"
+}
