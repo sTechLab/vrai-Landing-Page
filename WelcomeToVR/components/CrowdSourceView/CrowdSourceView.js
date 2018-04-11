@@ -6,7 +6,7 @@ export default class CrowdSourceView extends React.Component {
     super(props);
     this.state = {
       width: 570,
-      height: 290
+      height: 310
     };
   }
 
@@ -26,7 +26,7 @@ export default class CrowdSourceView extends React.Component {
           flexDirection: 'column',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          padding: 40
+          padding: 50
         }}
       >
         <Text

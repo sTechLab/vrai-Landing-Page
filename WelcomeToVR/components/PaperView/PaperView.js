@@ -34,7 +34,8 @@ export default class PaperView extends React.Component {
             fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            textAlign: 'justify'
+            textAlign: 'justify',
+            top: 10
           }}
         >
           {`Presenting at The Web Conference 2018, Lyon, France -- Crowdsourcing and Human Computation for the Web Research Track.\n
