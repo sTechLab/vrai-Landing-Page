@@ -1,6 +1,5 @@
-const Easing = require('Easing');
-
 import React from 'react';
+import { Easing } from 'react-native';
 import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
 
 export default class Axon extends React.Component {

@@ -1,0 +1,6 @@
+{
+  "name": "StudiesView",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./StudiesView.js"
+}

@@ -1,6 +1,17 @@
 import { authors } from '../viewSpecs';
 import React from 'react';
-import { asset, Animated, Image, Pano, Text, View, VrButton } from 'react-vr';
+import {
+  asset,
+  Animated,
+  Image,
+  Pano,
+  Text,
+  View,
+  VrButton,
+  NativeModules
+} from 'react-vr';
+
+const Linking = NativeModules.LinkingManager;
 
 export default class PeopleView extends React.Component {
   constructor(props) {
@@ -23,6 +34,7 @@ export default class PeopleView extends React.Component {
           width: this.state.width,
           height: this.state.height,
           backgroundColor: '#111',
+          borderRadius: 3,
           padding: 40,
           display: 'flex',
           flexDirection: 'row',
@@ -54,6 +66,11 @@ export default class PeopleView extends React.Component {
               style={{
                 marginTop: 90
               }}
+              onClick={() =>
+                Linking.openURL(authors[key].link).catch(err =>
+                  console.error('An error occurred', err)
+                )
+              }
             >
               <Text
                 style={{

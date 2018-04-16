@@ -5,8 +5,9 @@ export default class CrowdSourceView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 570,
-      height: 310
+      width: 600,
+      height: 300,
+      padding: 50
     };
   }
 
@@ -26,7 +27,7 @@ export default class CrowdSourceView extends React.Component {
           flexDirection: 'column',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          padding: 50
+          padding: this.state.padding
         }}
       >
         <Text
@@ -37,9 +38,8 @@ export default class CrowdSourceView extends React.Component {
             textAlign: 'justify'
           }}
         >
-          {`Def. [Wikipedia]
-            "Crowdsourcing is a sourcing model in which individuals or organizations obtain goods and services, including ideas and finances, from a large, relatively open and often rapidly-evolving group of internet users."\n
-            In this paper we use crowdsourcing to refer to "microtasks" performed in parallel by large, paid crowds (e.g. Amazon Mechanical Turk).`}
+          {`"Crowdsourcing is a sourcing model in which individuals or organizations obtain goods and services, including ideas and finances, from a large, relatively open and often rapidly-evolving group of internet users." -- Wikipedia\n
+          In this paper we use crowdsourcing to refer to "microtasks" performed in parallel by large, paid crowds (e.g. Amazon Mechanical Turk).`}
         </Text>
       </View>
     );

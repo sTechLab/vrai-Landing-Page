@@ -1,4 +1,5 @@
 import React from 'react';
+import { studies } from '../viewSpecs';
 import {
   asset,
   Animated,
@@ -12,12 +13,12 @@ import {
 
 const Linking = NativeModules.LinkingManager;
 
-export default class SoftwareView extends React.Component {
+export default class Study1View extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 480,
-      height: 180,
+      width: 630,
+      height: 300,
       padding: 50,
       linkColor: 'dodgerblue'
     };
@@ -40,7 +41,7 @@ export default class SoftwareView extends React.Component {
           flexDirection: 'column',
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
-          padding: 50
+          padding: this.state.padding
         }}
       >
         <Text
@@ -48,20 +49,22 @@ export default class SoftwareView extends React.Component {
             fontSize: 20,
             fontWeight: '100',
             opacity: 1,
-            textAlign: 'left'
+            textAlign: 'justify'
           }}
         >
-          {`Github link:`}
+          {`${studies['Study 1'].intro}
+
+          Estimated Time: 5 min`}
         </Text>
         <VrButton
           style={{
-            width: 500,
+            width: 400,
             backgroundColor: 'transparent',
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
-            marginTop: 10
+            marginTop: 20
           }}
           onEnter={() => {
             this.setState({ linkColor: 'deepskyblue' });
@@ -70,20 +73,20 @@ export default class SoftwareView extends React.Component {
             this.setState({ linkColor: 'dodgerblue' });
           }}
           onClick={() =>
-            Linking.openURL(
-              'https://github.com/sTechLab/VRCrowdExperiments'
-            ).catch(err => console.error('An error occurred', err))
+            Linking.openURL('https://www.google.com').catch(err =>
+              console.error('An error occurred', err)
+            )
           }
         >
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 28,
               fontWeight: '400',
               color: this.state.linkColor,
               textAlign: 'left'
             }}
           >
-            {`github.com/sTechLab/VRCrowdExperiments`}
+            {`Experience the Experiment >`}
           </Text>
         </VrButton>
       </View>

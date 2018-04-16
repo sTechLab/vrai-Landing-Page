@@ -1,12 +1,25 @@
 import React from 'react';
-import { asset, Animated, Image, Pano, Text, View } from 'react-vr';
+import {
+  asset,
+  Animated,
+  Image,
+  Pano,
+  Text,
+  View,
+  VrButton,
+  NativeModules
+} from 'react-vr';
+
+const Linking = NativeModules.LinkingManager;
 
 export default class PaperView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 570,
-      height: 240
+      width: 590,
+      height: 270,
+      padding: 50,
+      linkColor: 'dodgerblue'
     };
   }
 
@@ -22,11 +35,12 @@ export default class PaperView extends React.Component {
           width: this.state.width,
           height: this.state.height,
           backgroundColor: '#111',
+          borderRadius: 3,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: 40
+          alignItems: 'flex-start',
+          padding: 50
         }}
       >
         <Text
@@ -39,8 +53,41 @@ export default class PaperView extends React.Component {
           }}
         >
           {`Presenting at The Web Conference 2018, Lyon, France -- Crowdsourcing and Human Computation for the Web Research Track.\n
-            The PDF version is available through: https://arxiv.org/abs/1802.08345`}
+            The PDF version is available through:`}
         </Text>
+        <VrButton
+          style={{
+            width: 500,
+            backgroundColor: 'transparent',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            marginTop: 10
+          }}
+          onEnter={() => {
+            this.setState({ linkColor: 'deepskyblue' });
+          }}
+          onExit={() => {
+            this.setState({ linkColor: 'dodgerblue' });
+          }}
+          onClick={() =>
+            Linking.openURL('https://arxiv.org/abs/1802.08345').catch(err =>
+              console.error('An error occurred', err)
+            )
+          }
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: '400',
+              color: this.state.linkColor,
+              textAlign: 'left'
+            }}
+          >
+            {`arxiv.org/abs/1802.08345`}
+          </Text>
+        </VrButton>
       </View>
     );
   }

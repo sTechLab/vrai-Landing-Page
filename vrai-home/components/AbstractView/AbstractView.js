@@ -22,6 +22,7 @@ export default class AbstractView extends React.Component {
           width: this.state.width,
           height: this.state.height,
           backgroundColor: '#111',
+          borderRadius: 3,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'

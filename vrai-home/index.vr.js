@@ -1,10 +1,10 @@
 import AbstractView from './components/AbstractView';
 import Axon from './components/Axon';
 import CrowdSourceView from './components/CrowdSourceView';
-import Exp1View from './components/Exp1View';
-import Exp2View from './components/Exp2View';
-import Exp3View from './components/Exp3View';
-import ExperimentsView from './components/ExperimentsView';
+import Study1View from './components/Study1View';
+import Study2View from './components/Study2View';
+import Study3View from './components/Study3View';
+import StudiesView from './components/StudiesView';
 import Neurons from './components/Neurons';
 import PaperView from './components/PaperView';
 import PeopleView from './components/PeopleView';
@@ -92,10 +92,11 @@ export default class WelcomeToVR extends React.Component {
           setHeight={this._setViewHeight}
         />
       ),
-      Experiments: (
-        <ExperimentsView
+      Studies: (
+        <StudiesView
           setWidth={this._setViewWidth}
           setHeight={this._setViewHeight}
+          updateRenderedContent={this._updateRenderedContent}
         />
       ),
       'Crowd Sourcing': (
@@ -117,19 +118,19 @@ export default class WelcomeToVR extends React.Component {
         />
       ),
       'Proteus Effect': (
-        <Exp2View
+        <Study2View
           setWidth={this._setViewWidth}
           setHeight={this._setViewHeight}
         />
       ),
       'Drawing Power of Crowds': (
-        <Exp3View
+        <Study3View
           setWidth={this._setViewWidth}
           setHeight={this._setViewHeight}
         />
       ),
       'Restorative Effects of Virtual Environments': (
-        <Exp1View
+        <Study1View
           setWidth={this._setViewWidth}
           setHeight={this._setViewHeight}
         />
@@ -197,7 +198,8 @@ export default class WelcomeToVR extends React.Component {
                       height: this.state.contentViewHeight,
                       backgroundColor: '#888',
                       alignItems: 'center',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
+                      borderRadius: 3
                     }}
                   >
                     {contentViews[this.state.renderedContent]}
