@@ -45,13 +45,25 @@ h1 {
 }
 
 .title {
-  margin: 10%;
+  position: fixed;
+  width: 90%;
+  top: 45%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  z-index: 3;
   font-size: 2em;
   font-weight: 200;
+  text-align: center;
   letter-spacing: 0.08em;
   line-height: 150%;
   color: #fff;
   text-transform: uppercase;
+  animation-name: title;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  pointer-events: none;
 }
 
 #goggle-opening {
@@ -73,7 +85,19 @@ h1 {
   0% {
     opacity: 1;
   }
-  40% {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes title {
+  0% {
+    opacity: 1;
+  }
+  75% {
     opacity: 1;
   }
   100% {

@@ -55,7 +55,7 @@ export const vrTech = {
     img: '/vr-tech/htc-vive.jpg'
   },
   2: {
-    category: 'Mobile VR',
+    category: 'Mobile VR\n(Used in This Paper)',
     device: 'Samsung Gear VR',
     img: '/vr-tech/gear-vr.jpg'
   },
