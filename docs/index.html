@@ -1,0 +1,33 @@
+<html>
+
+  <head>
+    <title>Web-Based VR Experiments Powered by the Crowd</title>
+    <style>body { margin: 0; }</style>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />  
+  </head>
+
+  <body>
+
+    <div class='canvas'>
+    </div>
+    <p class='title'>
+      Web-Based VR Experiments Powered By The Crowd
+    </p>
+    <img id='goggle-opening' src="./static_assets/goggle_grey_frame_reduced_curve_3840x9216.svg" alt="goggle" />
+    <script src="build/client.bundle.js"></script>
+    <script defer>
+      // Initialize the React VR application
+      ReactVR.init('build/index.bundle.js', document.body), { assetRoot: 'static_assets/' };
+
+    </script>
+    <img id='goggle' src="./static_assets/goggle_grey_frame_reduced_curve_3840x9216.svg" alt="goggle" />
+    <h1>
+      Web-Based <br/>
+      VR Experiments <br/>
+      Powered By The Crowd
+    </h1>
+  </body>
+
+</html>
