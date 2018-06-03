@@ -19,7 +19,7 @@ export default class SoftwareView extends React.Component {
       width: 480,
       height: 180,
       padding: 50,
-      linkColor: 'dodgerblue'
+      linkColor: 'deepskyblue'
     };
   }
 
@@ -64,10 +64,10 @@ export default class SoftwareView extends React.Component {
             marginTop: 10
           }}
           onEnter={() => {
-            this.setState({ linkColor: 'deepskyblue' });
+            this.setState({ linkColor: 'skyblue' });
           }}
           onExit={() => {
-            this.setState({ linkColor: 'dodgerblue' });
+            this.setState({ linkColor: 'deepskyblue' });
           }}
           onClick={() =>
             Linking.openURL(

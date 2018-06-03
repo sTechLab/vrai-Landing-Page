@@ -19,7 +19,7 @@ export default class PaperView extends React.Component {
       width: 590,
       height: 270,
       padding: 50,
-      linkColor: 'dodgerblue'
+      linkColor: 'deepskyblue'
     };
   }
 
@@ -66,10 +66,10 @@ export default class PaperView extends React.Component {
             marginTop: 10
           }}
           onEnter={() => {
-            this.setState({ linkColor: 'deepskyblue' });
+            this.setState({ linkColor: 'skyblue' });
           }}
           onExit={() => {
-            this.setState({ linkColor: 'dodgerblue' });
+            this.setState({ linkColor: 'deepskyblue' });
           }}
           onClick={() =>
             Linking.openURL('https://arxiv.org/abs/1802.08345').catch(err =>

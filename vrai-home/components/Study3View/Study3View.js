@@ -1,6 +1,17 @@
 import React from 'react';
 import { studies } from '../viewSpecs';
-import { asset, Animated, Image, Pano, Text, View, VrButton } from 'react-vr';
+import {
+  asset,
+  Animated,
+  Image,
+  Pano,
+  Text,
+  View,
+  VrButton,
+  NativeModules
+} from 'react-vr';
+
+const Linking = NativeModules.LinkingManager;
 
 export default class Study3View extends React.Component {
   constructor(props) {
@@ -61,7 +72,11 @@ export default class Study3View extends React.Component {
           onExit={() => {
             this.setState({ linkColor: 'deepskyblue' });
           }}
-          onClick={() => {}}
+          onClick={() =>
+            Linking.openURL('http://vrai-2-demo.herokuapp.com/').catch(err =>
+              console.error('An error occurred', err)
+            )
+          }
         >
           <Text
             style={{

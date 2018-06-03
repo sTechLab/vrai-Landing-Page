@@ -20,7 +20,7 @@ export default class Study1View extends React.Component {
       width: 630,
       height: 300,
       padding: 50,
-      linkColor: 'dodgerblue'
+      linkColor: 'deepskyblue'
     };
   }
 
@@ -67,13 +67,13 @@ export default class Study1View extends React.Component {
             marginTop: 20
           }}
           onEnter={() => {
-            this.setState({ linkColor: 'deepskyblue' });
+            this.setState({ linkColor: 'skyblue' });
           }}
           onExit={() => {
-            this.setState({ linkColor: 'dodgerblue' });
+            this.setState({ linkColor: 'deepskyblue' });
           }}
           onClick={() =>
-            Linking.openURL('https://www.google.com').catch(err =>
+            Linking.openURL('http://vrai-1-demo.herokuapp.com/').catch(err =>
               console.error('An error occurred', err)
             )
           }
