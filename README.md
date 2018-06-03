@@ -1,1 +1,3 @@
-# vrai-Landing-Page
+# vrai-landing-page
+
+Built by [Eric Chien](https://github.com/virtuositeit)
