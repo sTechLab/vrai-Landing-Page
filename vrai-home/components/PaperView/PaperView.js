@@ -52,7 +52,7 @@ export default class PaperView extends React.Component {
             top: 10
           }}
         >
-          {`Presenting at The Web Conference 2018, Lyon, France -- Crowdsourcing and Human Computation for the Web Research Track.\n
+          {`Presented at The Web Conference 2018, Lyon, France -- Crowdsourcing and Human Computation for the Web Research Track.\n
             The PDF version is available through:`}
         </Text>
         <VrButton
